@@ -75,3 +75,19 @@ Test(parse_args, parser_one_arg_two_options)
     cr_assert_eq(get_parser()->options[1].found, true);
     del_parser();
 }
+
+Test(parse_args, parser_one_arg_one_option_with_value)
+{
+    char *args[] = {"test", "--version", "vers"};
+
+    init_parser();
+    if (add_option("-v", "--version", "version") < 0)
+        return;
+    if (add_option("-h", "--help", "help") < 0)
+        return;
+    parse_args(3, args);
+    cr_assert_eq(get_parser()->options[0].found, true);
+    cr_assert_eq(strcmp(get_parser()->options[0].value, "vers"), 0);
+    cr_assert_eq(get_parser()->options[1].found, false);
+    del_parser();
+}

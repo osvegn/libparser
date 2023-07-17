@@ -25,10 +25,10 @@ $(NAME): $(OBJECTS)
 	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
 
 clean:
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJECTS) $(TESTS_OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(TESTS_NAME)
 
 re: fclean all
 

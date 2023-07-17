@@ -40,23 +40,27 @@ int add_option(char *short_name, char *long_name, char *key)
     return 0;
 }
 
-static bool is_in(char *str, char **table, int table_size)
+static bool is_in_parser(char *str, int *index)
 {
-    for (int i = 0; i < table_size && table[i]; i++) {
-        if (strcmp(str, table[i]) == 0)
+    for ((*index) = 0; (*index) < parser.option_count; (*index)++) {
+        if (strncmp(str, parser.options[(*index)].short_name, 256) == 0)
+            return true;
+        if (strncmp(str, parser.options[(*index)].long_name, 512) == 0)
             return true;
     }
+    (*index) = 0;
     return false;
 }
 
 int parse_args(int ac, char **av)
 {
-    for (int j = 0; j < parser.option_count; j++) {
-        if ((parser.options[j].short_name[0] && is_in(parser.options[j].short_name, av + 1, ac - 1)) || is_in(parser.options[j].long_name, av + 1, ac - 1)) {
-            parser.options[j].found = true;
-            if (j + 1 < parser.option_count && !is_in(parser.options[j].short_name, av + 1, ac - 1) && !is_in(parser.options[j].long_name, av + 1, ac - 1)) {
-                strncpy(parser.options[j].value, av[j + 1], 512);
-            }
+    int option_index = 0;
+
+    for (int i = 1; i < ac; i++) {
+        if (is_in_parser(av[i], &option_index)) {
+            parser.options[option_index].found = true;
+            if (i + 1 < ac && !is_in_parser(av[i + 1], &option_index))
+                strncpy(parser.options[option_index].value, av[i + 1], 512);
         }
     }
     return 0;
