@@ -22,7 +22,7 @@ void del_parser(void)
 }
 
 
-int add_option(char *short_name, char *long_name, char *key)
+int add_option(char *short_name, char *long_name, char *key, char *help)
 {
     if (!long_name || !key)
         return -1;
@@ -34,6 +34,10 @@ int add_option(char *short_name, char *long_name, char *key)
         strncpy(parser.options[parser.option_count].short_name, short_name, 256);
     else
         memset(parser.options[0].short_name, 0, 256);
+    if (help)
+        strncpy(parser.options[parser.option_count].help, help, 1024);
+    else
+        memset(parser.options[0].help, 0, 1024);
     strncpy(parser.options[parser.option_count].key, key, 256);
     parser.options[parser.option_count].found = false;
     parser.option_count++;

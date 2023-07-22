@@ -25,15 +25,15 @@ $(NAME): $(OBJECTS)
 	$(CC) -o $(NAME) $(OBJECTS) $(LDFLAGS)
 
 clean:
-	$(RM) $(OBJECTS) $(TESTS_OBJECTS)
+	$(RM) $(OBJECTS) $(TESTS_OBJECTS) $(TESTS_NAME)
 
 fclean: clean
-	$(RM) $(NAME) $(TESTS_NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
-tests: $(TESTS_OBJECTS) $(NAME)
-	$(CC) -o $(TESTS_NAME) $(TESTS_OBJECTS) -L. -lparser -lcriterion --coverage
+tests: $(NAME)
+	$(CC) -o $(TESTS_NAME) $(TESTS) -L. -lparser -lcriterion --coverage -I includes
 
 run_tests: tests
 	export LD_LIBRARY_PATH=. && ./$(TESTS_NAME)

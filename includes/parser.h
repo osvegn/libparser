@@ -5,6 +5,7 @@ typedef struct option_s {
     char long_name[512];
     char key[256];
     char value[512];
+    char help[1024];
     bool found;
 } option_t;
 
@@ -18,4 +19,4 @@ parser_t *get_parser(void);
 void del_parser(void);
 
 int parse_args(int ac, char **av);
-int add_option(char *short_name, char *long_name, char *key);
+int add_option(char *short_name, char *long_name, char *key, char *help);
