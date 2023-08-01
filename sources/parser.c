@@ -8,6 +8,7 @@ void init_parser(void)
 {
     parser.options = 0;
     parser.option_count = 0;
+    add_option("-h", "--help", "help", "Show help");
 }
 
 parser_t *get_parser(void)
@@ -33,23 +34,28 @@ int add_option(char *short_name, char *long_name, char *key, char *help)
     if (short_name)
         strncpy(parser.options[parser.option_count].short_name, short_name, 256);
     else
-        memset(parser.options[0].short_name, 0, 256);
+        memset(parser.options[parser.option_count].short_name, 0, 256);
     if (help)
         strncpy(parser.options[parser.option_count].help, help, 1024);
     else
-        memset(parser.options[0].help, 0, 1024);
+        memset(parser.options[parser.option_count].help, 0, 1024);
     strncpy(parser.options[parser.option_count].key, key, 256);
     parser.options[parser.option_count].found = false;
+    memset(parser.options[parser.option_count].value, 0, 512);
     parser.option_count++;
     return 0;
 }
 
 static bool is_in_parser(char *str, int *index)
 {
+    int len = 0;
+
     for ((*index) = 0; (*index) < parser.option_count; (*index)++) {
-        if (strncmp(str, parser.options[(*index)].short_name, 256) == 0)
+        len = strlen(parser.options[(*index)].short_name);
+        if (strncmp(str, parser.options[(*index)].short_name, len) == 0)
             return true;
-        if (strncmp(str, parser.options[(*index)].long_name, 512) == 0)
+        len = strlen(parser.options[(*index)].long_name);
+        if (strncmp(str, parser.options[(*index)].long_name, len) == 0)
             return true;
     }
     (*index) = 0;
@@ -63,8 +69,11 @@ int parse_args(int ac, char **av)
     for (int i = 1; i < ac; i++) {
         if (is_in_parser(av[i], &option_index)) {
             parser.options[option_index].found = true;
-            if (i + 1 < ac && !is_in_parser(av[i + 1], &option_index))
+            int tmp = option_index;
+            if (i + 1 < ac && !is_in_parser(av[i + 1], &tmp))
                 strncpy(parser.options[option_index].value, av[i + 1], 512);
+            if (av[i][strlen(parser.options[option_index].long_name)] == '=')
+                strncpy(parser.options[option_index].value, av[i] + strlen(parser.options[option_index].long_name) + 1, 512);
         }
     }
     return 0;
