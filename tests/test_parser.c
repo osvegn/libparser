@@ -160,3 +160,52 @@ Test(parse_args, parser_multi_args_multi_options)
     cr_assert_eq(strcmp(get_parser()->options[5].value, ""), 0);
     del_parser();
 }
+
+Test(get_value, test_get_value)
+{
+    char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
+
+    init_parser();
+    add_option("-v", "--version", "version", "");
+    parse_args(6, args);
+    cr_assert_neq(get_value("version"), 0);
+    del_parser();
+}
+
+Test(get_value, test_get_value_null_key)
+{
+    cr_assert_eq(get_value(NULL), 0);
+}
+
+Test(get_value, test_get_value_null_key_init_parser)
+{
+    char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
+
+    init_parser();
+    add_option("-v", "--version", "version", "");
+    parse_args(6, args);
+    cr_assert_eq(get_value(NULL), 0);
+    del_parser();
+}
+
+Test(get_value, test_get_value_empty_key_init_parser)
+{
+    char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
+
+    init_parser();
+    add_option("-v", "--version", "version", "");
+    parse_args(6, args);
+    cr_assert_eq(get_value(""), 0);
+    del_parser();
+}
+
+Test(get_value, test_get_value_not_found_key)
+{
+    char *args[] = {"test", "--load", "-r", "--help", "coucou", "--test"};
+
+    init_parser();
+    add_option("-v", "--version", "version", "");
+    parse_args(6, args);
+    cr_assert_eq(get_value("version"), 0);
+    del_parser();
+}

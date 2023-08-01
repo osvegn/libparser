@@ -78,3 +78,27 @@ int parse_args(int ac, char **av)
     }
     return 0;
 }
+
+static int index_from_key(char *key)
+{
+    int i = 0;
+
+    if (!key)
+        return -1;
+    for (; i < parser.option_count; i++) {
+        if (strcmp(parser.options[i].key, key) == 0)
+            return i;
+    }
+    return -1;
+}
+
+char *get_value(char *key)
+{
+    int index = index_from_key(key);
+
+    if (index < 0)
+        return 0;
+    if (!parser.options[index].found)
+        return 0;
+    return parser.options[index].value;
+}
