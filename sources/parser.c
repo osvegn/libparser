@@ -116,4 +116,5 @@ void dump(void)
         i++;
     }
     printf("----------\n");
+    fflush(stdout);
 }

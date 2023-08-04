@@ -1,14 +1,15 @@
-Fri Aug  4 01:32:07 PM CEST 2023
-[====] Synthesis: Tested: 18 | Passing: 18 | Failing: 0 | Crashing: 0 
+Fri Aug  4 01:55:37 PM CEST 2023
+libgcov profiling error:/home/osvegn/Documents/Repositories/libparser/build/CMakeFiles/parser.dir/sources/parser.c.gcda:overwriting an existing profile data with a different checksum
+[====] Synthesis: Tested: 19 | Passing: 19 | Failing: 0 | Crashing: 0 
 ------------------------------------------------------------------------------
                            GCC Code Coverage Report
 Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-sources/parser.c                              76      65    85%   33,107,109-110,112-116,118-119
+sources/parser.c                              77      76    98%   33
 ------------------------------------------------------------------------------
-TOTAL                                         76      65    85%
+TOTAL                                         77      76    98%
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                            GCC Code Coverage Report
@@ -16,7 +17,7 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                    Branches   Taken  Cover   Missing
 ------------------------------------------------------------------------------
-sources/parser.c                              42      36    85%   22,32,113,115
+sources/parser.c                              42      40    95%   22,32
 ------------------------------------------------------------------------------
-TOTAL                                         42      36    85%
+TOTAL                                         42      40    95%
 ------------------------------------------------------------------------------

@@ -1,5 +1,12 @@
 #include <criterion/criterion.h>
+#include <criterion/redirect.h>
 #include "parser.h"
+
+void redirect_all_stdout(void)
+{
+    cr_redirect_stdout();
+    cr_redirect_stderr();
+}
 
 Test(init_parser, create_empty_parser)
 {
@@ -207,5 +214,35 @@ Test(get_value, test_get_value_not_found_key)
     add_option("-v", "--version", "version", "");
     parse_args(6, args);
     cr_assert_eq(get_value("version"), 0);
+    del_parser();
+}
+
+Test(dump, test_dump_parser, .init = redirect_all_stdout)
+{
+    char *args[] = {"test", "--version"};
+    char output[2048];
+
+    memset(output, 0, 2048);
+    strcpy(output, "----------\n");
+    strcat(output, "option_number:\t0\n");
+    strcat(output, "short_name:\t-h\n");
+    strcat(output, "long_name:\t--help\n");
+    strcat(output, "key:\t\thelp\n");
+    strcat(output, "value:\t\t\n");
+    strcat(output, "help:\t\tShow help\n");
+    strcat(output, "found:\t\tFalse\n\n");
+    strcat(output, "option_number:\t1\n");
+    strcat(output, "short_name:\t-v\n");
+    strcat(output, "long_name:\t--version\n");
+    strcat(output, "key:\t\tversion\n");
+    strcat(output, "value:\t\t\n");
+    strcat(output, "help:\t\t\n");
+    strcat(output, "found:\t\tTrue\n\n");
+    strcat(output, "----------\n");
+    init_parser();
+    add_option("-v", "--version", "version", "");
+    parse_args(2, args);
+    dump();
+    cr_assert_stdout_eq_str(output);
     del_parser();
 }
