@@ -33,7 +33,7 @@ jobs:
     - name: Install criterion
       run: |
         sudo apt install -y meson
-        git clone https://github.com/Snaipe/Criterion.git
+        git clone https://github.com/Snaipe/Criterion.git Criterion
         cd Criterion
         sudo meson install -C build
         sudo ldconfig
