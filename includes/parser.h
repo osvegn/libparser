@@ -21,3 +21,4 @@ void del_parser(void);
 int parse_args(int ac, char **av);
 int add_option(char *short_name, char *long_name, char *key, char *help);
 char *get_value(char *key);
+void dump(void);

@@ -1,6 +1,7 @@
 #include "parser.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 static parser_t parser = {0};
 
@@ -101,4 +102,18 @@ char *get_value(char *key)
     if (!parser.options[index].found)
         return 0;
     return parser.options[index].value;
+}
+
+void dump(void)
+{
+    int i = 0;
+    option_t *option = 0;
+
+    printf("----------\n");
+    while (parser.option_count > i) {
+        option = &parser.options[i];
+        printf("option_number:\t%d\nshort_name:\t%s\nlong_name:\t%s\nkey:\t\t%s\nvalue:\t\t%s\nhelp:\t\t%s\nfound:\t\t%s\n\n", i, option->short_name, option->long_name, option->key, option->value, option->help, (option->found) ? "True" : "False");
+        i++;
+    }
+    printf("----------\n");
 }
