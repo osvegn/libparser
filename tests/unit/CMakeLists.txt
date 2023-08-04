@@ -1,4 +1,4 @@
-set(SOURCES_ROOT ${PROJECT_SOURCE_DIR}/tests)
+set(SOURCES_ROOT ${PROJECT_SOURCE_DIR}/tests/unit)
 set(INCLUDES_ROOT ${PROJECT_SOURCE_DIR}/includes)
 
 set(TEST_NAME test_parser)
