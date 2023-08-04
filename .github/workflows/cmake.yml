@@ -32,6 +32,7 @@ jobs:
 
     - name: Install criterion
       run: |
+        apt install meson
         git clone https://github.com/Snaipe/Criterion.git
         meson install -C build
         ldconfig
