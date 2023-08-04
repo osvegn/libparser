@@ -7,18 +7,12 @@ Linux only for the moment. It will be improved.
 ## How to build
 ### Build lib
 ```bash
-cmake -B build
-cmake --build build
+make
 ```
 
-### Build test
+### Build and run tests
 ```bash
-cmake -B build -DTESTING=ON
-cmake --build build
-```
-Then, to run test, execute:
-```bash
-./bin/test_parser
+make run_tests
 ```
 
 ## Contribute
