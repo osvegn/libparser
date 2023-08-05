@@ -6,6 +6,7 @@ all:
 COVERAGE_REPORT_FILENAME	=	tests/coverage_report.txt
 
 run_tests:
+	./install_criterion.sh
 	cmake -B build -DTESTING=ON
 	cmake --build build
 	date > $(COVERAGE_REPORT_FILENAME)

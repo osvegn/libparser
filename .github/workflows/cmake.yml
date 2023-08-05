@@ -30,15 +30,6 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-    - name: Install criterion
-      run: |
-        sudo apt-get install gcovr
-        sudo apt-get install meson
-        git clone --recursive https://github.com/Snaipe/Criterion Criterion
-        cd Criterion
-        meson build
-        ninja -C build
-        sudo ninja -C build install
     - name: Test
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
