@@ -15,6 +15,10 @@ run_tests:
 	gcovr --branch --exclude tests >> $(COVERAGE_REPORT_FILENAME)
 	cat $(COVERAGE_REPORT_FILENAME)
 
+run_coverage: run_tests
+	mkdir -p coverage
+	gcovr --exclude tests --html-details coverage/index.html
+
 clean:
 	rm -rf build
 
