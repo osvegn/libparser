@@ -73,7 +73,7 @@ static bool is_in_parser(char *str, int *index)
     return false;
 }
 
-int parse_args(int ac, char **av)
+int parse_args(int ac, const char **av)
 {
     int option_index = 0;
 
