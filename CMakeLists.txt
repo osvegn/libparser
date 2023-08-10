@@ -19,13 +19,23 @@ if (TESTING)
     add_subdirectory(tests/unit)
 endif()
 
-add_library(${TARGET} SHARED ${SOURCES})
+add_library(${TARGET}_shared SHARED ${SOURCES})
+add_library(${TARGET}_static STATIC ${SOURCES})
 
-target_include_directories(${TARGET}
+target_include_directories(${TARGET}_shared
     PUBLIC ${INCLUDES_ROOT}
 )
 
-set_target_properties(${TARGET}
+target_include_directories(${TARGET}_static
+    PUBLIC ${INCLUDES_ROOT}
+)
+
+set_target_properties(${TARGET}_shared
     PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
+)
+
+set_target_properties(${TARGET}_static
+    PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
 )
