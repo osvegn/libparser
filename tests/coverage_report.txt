@@ -1,13 +1,12 @@
-Fri Aug  4 01:55:37 PM CEST 2023
-libgcov profiling error:/home/osvegn/Documents/Repositories/libparser/build/CMakeFiles/parser.dir/sources/parser.c.gcda:overwriting an existing profile data with a different checksum
-[====] Synthesis: Tested: 19 | Passing: 19 | Failing: 0 | Crashing: 0 
+Thu Aug 10 10:29:29 PM CEST 2023
+[====] Synthesis: Tested: 20 | Passing: 20 | Failing: 0 | Crashing: 0 
 ------------------------------------------------------------------------------
                            GCC Code Coverage Report
 Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-sources/parser.c                              77      76    98%   33
+sources/parser.c                              77      76    98%   44
 ------------------------------------------------------------------------------
 TOTAL                                         77      76    98%
 ------------------------------------------------------------------------------
@@ -17,7 +16,7 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                    Branches   Taken  Cover   Missing
 ------------------------------------------------------------------------------
-sources/parser.c                              42      40    95%   22,32
+sources/parser.c                              42      40    95%   32,43
 ------------------------------------------------------------------------------
 TOTAL                                         42      40    95%
 ------------------------------------------------------------------------------

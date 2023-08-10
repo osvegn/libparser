@@ -1,3 +1,11 @@
+##
+# Filename: Makefile
+# Path: .
+#  Created Date: Thursday, August 10th 2023, 10:29:05 pm
+#  Author: osvegn
+#  
+#  Copyright (c) 2023 Your Company
+##
 
 all:
 	cmake -B build

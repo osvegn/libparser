@@ -1,3 +1,13 @@
+/*
+ * Filename: tests/unit/test_parser.c
+ * Path: tests/unit
+ * Created Date: Monday, July 17th 2023, 8:07:36 pm
+ * Author: osvegn
+ * 
+ * Copyright (c) 2023 Your Company
+ */
+
+
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 #include "parser.h"
@@ -245,4 +255,10 @@ Test(dump, test_dump_parser, .init = redirect_all_stdout)
     dump();
     cr_assert_stdout_eq_str(output);
     del_parser();
+}
+
+Test(dump, test_empty_dump, .init=redirect_all_stdout)
+{
+    dump();
+    cr_assert_stdout_eq_str("----------\n----------\n");
 }

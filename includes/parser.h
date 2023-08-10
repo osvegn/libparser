@@ -1,3 +1,13 @@
+/*
+ * Filename: includes/parser.h
+ * Path: includes
+ * Created Date: Friday, August 4th 2023, 1:28:12 pm
+ * Author: osvegn
+ * 
+ * Copyright (c) 2023 Your Company
+ */
+
+
 #include <stdbool.h>
 
 typedef struct option_s {

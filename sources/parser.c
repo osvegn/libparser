@@ -1,3 +1,13 @@
+/*
+ * Filename: sources/parser.c
+ * Path: sources
+ * Created Date: Friday, August 4th 2023, 1:28:12 pm
+ * Author: osvegn
+ * 
+ * Copyright (c) 2023 Your Company
+ */
+
+
 #include "parser.h"
 #include <stdlib.h>
 #include <string.h>
