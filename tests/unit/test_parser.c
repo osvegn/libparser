@@ -265,7 +265,7 @@ Test(dump, test_empty_dump, .init=redirect_all_stdout)
 
 Test(is_option_found, test_is_option_found)
 {
-    const char *args[] = {"test", "-v"}
+    const char *args[] = {"test", "-v"};
 
     init_parser();
     if (add_option("-v", "--version", "version", "version") < 0)
