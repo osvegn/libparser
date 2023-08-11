@@ -33,6 +33,7 @@ target_include_directories(${TARGET}_static
 set_target_properties(${TARGET}_shared
     PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
+    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
 )
 
 set_target_properties(${TARGET}_static

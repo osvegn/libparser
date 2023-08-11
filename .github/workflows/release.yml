@@ -1,4 +1,4 @@
-name: CMake
+name: Release
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
     - name: Create artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: binaries
-        path: build/bin
+        name: binaries-${{ matrix.os }}
+        path: bin
