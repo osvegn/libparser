@@ -92,3 +92,12 @@ char *get_value(char *key);
  * the parser.
 */
 void dump(void);
+
+/**
+ * @author osvegn
+ * @name is_option_found
+ * @brief It checks if key was found or not.
+ * @param str | The option's key.
+ * @param bool | true if found, false otherwise.
+*/
+bool is_option_found(char *key);

@@ -262,3 +262,34 @@ Test(dump, test_empty_dump, .init=redirect_all_stdout)
     dump();
     cr_assert_stdout_eq_str("----------\n----------\n");
 }
+
+Test(is_option_found, test_is_option_found)
+{
+    char *args[] = {"test", "-v"}
+
+    init_parser();
+    if (add_option("-v", "--version", "version", "version") < 0)
+        cr_assert_eq(1, 0);
+    if (add_option("-r", "--recursive", "recursive", "recursive") < 0)
+        cr_assert_eq(1, 0);
+    parse_args(2, args);
+    cr_assert_eq(is_option_found("version"), true);
+    cr_assert_eq(is_option_found("recursive"), false);
+    del_parser();
+}
+
+Test(is_option_found, test_is_option_found_no_parser)
+{
+    cr_assert_eq(is_option_found("version"), false);
+}
+
+Test(is_option_found, test_is_option_found_invalid_option)
+{
+    char *args[] = {"test", "-r"}
+
+    init_parser();
+    if (add_option("-r", "--recursive", "recursive", "recursive") < 0)
+        cr_assert_eq(1, 0);
+    parse_args(2, args);
+    cr_assert_eq(is_option_found("version"), false);
+}

@@ -128,3 +128,12 @@ void dump(void)
     printf("----------\n");
     fflush(stdout);
 }
+
+bool is_option_found(char *key)
+{
+    int index = index_from_key(key);
+
+    if (index < 0)
+        return false;
+    return parser.options[index].found;
+}
