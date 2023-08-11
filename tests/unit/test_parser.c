@@ -67,7 +67,7 @@ Test(init_parser, create_parser_null_key)
 
 Test(parse_args, parser_one_arg_one_option)
 {
-    char *args[] = {"test", "--version"};
+    const char *args[] = {"test", "--version"};
 
     init_parser();
     if (add_option("-v", "--version", "version", "") < 0)
@@ -79,7 +79,7 @@ Test(parse_args, parser_one_arg_one_option)
 
 Test(parse_args, parser_one_arg_two_options)
 {
-    char *args[] = {"test", "--quit"};
+    const char *args[] = {"test", "--quit"};
 
     init_parser();
     if (add_option("-v", "--version", "version", "") < 0)
@@ -94,7 +94,7 @@ Test(parse_args, parser_one_arg_two_options)
 
 Test(parse_args, parser_one_arg_one_option_with_value)
 {
-    char *args[] = {"test", "--version", "vers"};
+    const char *args[] = {"test", "--version", "vers"};
 
     init_parser();
     if (add_option("-v", "--version", "version", "") < 0)
@@ -110,7 +110,7 @@ Test(parse_args, parser_one_arg_one_option_with_value)
 
 Test(parse_args, create_parser_null_help)
 {
-    char *args[] = {"test", "--version", "vers"};
+    const char *args[] = {"test", "--version", "vers"};
 
     init_parser();
     if (add_option("-v", "--version", "version", NULL) < 0)
@@ -122,7 +122,7 @@ Test(parse_args, create_parser_null_help)
 
 Test(parse_args, parser_one_arg_one_option_with_value_and_short_option)
 {
-    char *args[] = {"test", "-v", "vers"};
+    const char *args[] = {"test", "-v", "vers"};
 
     init_parser();
     if (add_option("-v", "--version", "version", "") < 0)
@@ -138,7 +138,7 @@ Test(parse_args, parser_one_arg_one_option_with_value_and_short_option)
 
 Test(parse_args, parser_one_arg_one_option_with_value_using_equal)
 {
-    char *args[] = {"test", "--version=salut"};
+    const char *args[] = {"test", "--version=salut"};
 
     init_parser();
     if (add_option("-v", "--version", "version", "") < 0)
@@ -151,7 +151,7 @@ Test(parse_args, parser_one_arg_one_option_with_value_using_equal)
 
 Test(parse_args, parser_multi_args_multi_options)
 {
-    char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
+    const char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
 
     init_parser();
     if (add_option("-v", "--version", "version", "") < 0)
@@ -180,7 +180,7 @@ Test(parse_args, parser_multi_args_multi_options)
 
 Test(get_value, test_get_value)
 {
-    char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
+    const char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
 
     init_parser();
     add_option("-v", "--version", "version", "");
@@ -196,7 +196,7 @@ Test(get_value, test_get_value_null_key)
 
 Test(get_value, test_get_value_null_key_init_parser)
 {
-    char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
+    const char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
 
     init_parser();
     add_option("-v", "--version", "version", "");
@@ -207,7 +207,7 @@ Test(get_value, test_get_value_null_key_init_parser)
 
 Test(get_value, test_get_value_empty_key_init_parser)
 {
-    char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
+    const char *args[] = {"test", "--load", "-v", "--help", "coucou", "--test"};
 
     init_parser();
     add_option("-v", "--version", "version", "");
@@ -218,7 +218,7 @@ Test(get_value, test_get_value_empty_key_init_parser)
 
 Test(get_value, test_get_value_not_found_key)
 {
-    char *args[] = {"test", "--load", "-r", "--help", "coucou", "--test"};
+    const char *args[] = {"test", "--load", "-r", "--help", "coucou", "--test"};
 
     init_parser();
     add_option("-v", "--version", "version", "");
@@ -229,7 +229,7 @@ Test(get_value, test_get_value_not_found_key)
 
 Test(dump, test_dump_parser, .init = redirect_all_stdout)
 {
-    char *args[] = {"test", "--version"};
+    const char *args[] = {"test", "--version"};
     char output[2048];
 
     memset(output, 0, 2048);
@@ -265,7 +265,7 @@ Test(dump, test_empty_dump, .init=redirect_all_stdout)
 
 Test(is_option_found, test_is_option_found)
 {
-    char *args[] = {"test", "-v"}
+    const char *args[] = {"test", "-v"}
 
     init_parser();
     if (add_option("-v", "--version", "version", "version") < 0)
@@ -285,7 +285,7 @@ Test(is_option_found, test_is_option_found_no_parser)
 
 Test(is_option_found, test_is_option_found_invalid_option)
 {
-    char *args[] = {"test", "-r"}
+    const char *args[] = {"test", "-r"};
 
     init_parser();
     if (add_option("-r", "--recursive", "recursive", "recursive") < 0)
