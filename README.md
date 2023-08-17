@@ -1,18 +1,29 @@
 # libparser
-Simple libc parser to parse args from command line.
+Simple libc parser to parse arguments.
+Use it in your project to easy parse and use arguments.
 
 ## Platform
-Linux only for the moment. It will be improved.
+Linux: Build and tested
+Windows: Build only
+Macos: Build only
 
+## Tests
+A summary of tests is provided [here](https://github.com/osvegn/libparser/blob/main/tests/coverage_report.txt).
 ## How to build
 ### Build lib
 ```bash
-make
+cmake -B build
 ```
 
-### Build and run tests
+### Build
 ```bash
-make run_tests
+cmake --build build
+```
+
+### Run tests
+```
+cmake -B build -DTESTING=ON
+cmake --build build
 ```
 
 ## Contribute
