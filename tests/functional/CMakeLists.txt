@@ -3,7 +3,7 @@ set(INCLUDES_ROOT ${PROJECT_SOURCE_DIR}/includes)
 
 set(TEST_NAME functional_test_parser)
 set(TEST_SOURCES
-
+    ${SOURCES_ROOT}/basic_example.c
 )
 
 add_executable(${TEST_NAME} ${TEST_SOURCES})
