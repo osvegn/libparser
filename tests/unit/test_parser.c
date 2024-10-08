@@ -1,10 +1,10 @@
 /*
- * Filename: tests/unit/test_parser.c
+ * Filename: test_parser.c
  * Path: tests/unit
  * Created Date: Monday, July 17th 2023, 8:07:36 pm
  * Author: osvegn
  * 
- * Copyright (c) 2023 Your Company
+ * Copyright (c) 2023 osvegn
  */
 
 

@@ -57,3 +57,4 @@ bin
 coverage
 cmake-build-debug
 .idea
+docs

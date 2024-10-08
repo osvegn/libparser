@@ -4,7 +4,7 @@
  * Created Date: Monday, July 17th 2023, 8:07:36 pm
  * Author: osvegn
  *
- * Copyright (c) 2023 libparser
+ * Copyright (c) 2023 osvegn
  */
 
 #include "parser.h"

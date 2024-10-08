@@ -4,7 +4,7 @@
  * Created Date: Friday, August 4th 2023, 1:28:12 pm
  * Author: osvegn
  * 
- * Copyright (c) 2023 Your Company
+ * Copyright (c) 2023 osvegn
  */
 
 
@@ -38,7 +38,7 @@ void init_parser(void);
  * @brief Getter which returns the instance of the parser.
  * @return const parser_t pointer.
 */
-parser_t *get_parser(void);
+const parser_t * const get_parser(void);
 
 /**
  * @author osvegn
@@ -63,27 +63,27 @@ int parse_args(int ac, const char **av);
  * @author osvegn
  * @name add_option
  * @brief Configure new option. It defines new available option to parser.
- * @param short_name str | Short name of the option (256).
+ * @param short_name str (optional) | Short name of the option (256).
  * (example: "-v")
  * @param long_name str | Long name of the option (512).
  * (example: "--version")
  * @param key str | Key of the option (256). (example: "version")
- * @param help str | Help message to print on help (1024).
+ * @param help str (optional) | Help message to print on help (1024).
  * (example: "Print version")
  * @return int | -1 if long_name or key is null, or if realloc failed.
  * 0 on success.
 */
-int add_option(char *short_name, char *long_name, char *key, char *help);
+int add_option(const char *short_name, const char *long_name, const char *key, const char *help);
 
 /**
  * @author osvegn
  * @name get_value
  * @brief Get value from key.
- * @param key str | Key to get value from.
- * @return str | Value of the key.
+ * @param str Key to get value from.
+ * @return str - Value of the key.
  * 0 if key not found or if option isn't filled.
 */
-char *get_value(char *key);
+char *get_value(const char *key);
 
 /**
  * @author osvegn
@@ -96,8 +96,8 @@ void dump(void);
 /**
  * @author osvegn
  * @name is_option_found
- * @brief It checks if key was found or not.
+ * @brief It checks if key exists in parser instance.
  * @param str | The option's key.
- * @param bool | true if found, false otherwise.
+ * @return bool | true if found, false otherwise.
 */
-bool is_option_found(char *key);
+bool is_option_found(const char *key);

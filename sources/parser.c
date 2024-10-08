@@ -4,7 +4,7 @@
  * Created Date: Friday, August 4th 2023, 1:28:12 pm
  * Author: osvegn
  * 
- * Copyright (c) 2023 Your Company
+ * Copyright (c) 2023 osvegn
  */
 
 
@@ -22,7 +22,7 @@ void init_parser(void)
     add_option("-h", "--help", "help", "Show help");
 }
 
-parser_t *get_parser(void)
+const parser_t * const get_parser(void)
 {
     return &parser;
 }
@@ -34,7 +34,7 @@ void del_parser(void)
 }
 
 
-int add_option(char *short_name, char *long_name, char *key, char *help)
+int add_option(const char *short_name, const char *long_name, const char *key, const char *help)
 {
     if (!long_name || !key)
         return -1;
@@ -57,7 +57,7 @@ int add_option(char *short_name, char *long_name, char *key, char *help)
     return 0;
 }
 
-static bool is_in_parser(char *str, int *index)
+static bool is_in_parser(const char *str, int * const index)
 {
     int len = 0;
 
@@ -90,7 +90,7 @@ int parse_args(int ac, const char **av)
     return 0;
 }
 
-static int index_from_key(char *key)
+static int index_from_key(const char *key)
 {
     int i = 0;
 
@@ -103,7 +103,7 @@ static int index_from_key(char *key)
     return -1;
 }
 
-char *get_value(char *key)
+char *get_value(const char *key)
 {
     int index = index_from_key(key);
 
@@ -129,7 +129,7 @@ void dump(void)
     fflush(stdout);
 }
 
-bool is_option_found(char *key)
+bool is_option_found(const char *key)
 {
     int index = index_from_key(key);
 

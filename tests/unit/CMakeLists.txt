@@ -13,7 +13,7 @@ target_include_directories(${TEST_NAME} PUBLIC ${INCLUDES_ROOT})
 
 add_test(${TEST_NAME} ${TEST_NAME})
 
-set_target_properties(${TEST_NAME}
-    PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
-)
+# set_target_properties(${TEST_NAME}
+#     PROPERTIES
+#     RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin
+# )
